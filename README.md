@@ -31,15 +31,15 @@ QQ群：866828944
 #### 软件截图
 <table>
     <tr>
-        <td><img src="https://images.gitee.com/uploads/images/2021/0203/233545_15df4df0_8387330.jpeg"/></td>
-        <td><img src="https://images.gitee.com/uploads/images/2021/0203/233557_2eac71bf_8387330.png"/></td>
+        <td><img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861347218.png"/></td>
+        <td><img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861092457.png"/></td>
     </tr>
 </table>
 
 #### 聊天工具栏测试
 <p>
-    <img src="https://images.gitee.com/uploads/images/2021/0204/173616_fa632253_8387330.png" width="240" height="240"/>
-    <img src="https://images.gitee.com/uploads/images/2021/0207/125422_faadeac0_8387330.png" width="135" height="240"/>
+    <img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861099648.png" width="240" height="240"/>
+    <img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861105454.png" width="135" height="240"/>
 </p>
 
 ## 安装教程
@@ -77,7 +77,7 @@ QQ群：866828944
 | 聊天工具栏 | Vue | /public/chat-tool | [huankemao-chat-tool](https://github.com/huankemao/huankemao-chat-tool) |
 
 ## 开发计划
-![开发计划](https://images.gitee.com/uploads/images/2021/0208/132954_bbc35ca3_8387330.png "开发计划")
+![开发计划](https://huankemao.com/huankemao-cms/upload/1/editor/1612861110227.png "开发计划")
 
 ## 技术选型
 #### 后台框架
