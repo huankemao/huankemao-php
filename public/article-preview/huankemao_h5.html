@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>唤客猫文章预览</title>
+    <script src='./js/jquery-3.0.0.js'></script>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    .content {
+        width: 100%;
+        padding: 20px 12px;
+
+
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 22px;
+        font-family: PingFang-SC-Bold, PingFang-SC;
+        font-weight: bold;
+        color: #333333;
+        line-height: 30px;
+    }
+
+    .span_box {
+        margin: 12px 0 18px 0;
+
+    }
+
+    span {
+
+        font-size: 14px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #999999;
+        line-height: 20px;
+    }
+
+    .time {
+        margin-left: 20px;
+    }
+
+    .text {
+
+        font-size: 16px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #333333;
+        line-height: 30px;
+    }
+
+    .text img {
+        /* width: 100%; */
+    }
+    .link{
+        margin-top: 10px;
+    }
+    a {
+        font-size: 16px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: darkred;
+    }
+
+    /*包含以下五种的链接*/
+    a {
+        text-decoration: none;
+    }
+
+    /*正常的未被访问过的链接*/
+    a:link {
+        text-decoration: none;
+    }
+
+    /*已经访问过的链接*/
+    a:visited {
+        text-decoration: none;
+    }
+
+    /*鼠标划过(停留)的链接*/
+    a:hover {
+        text-decoration: none;
+    }
+
+    /* 正在点击的链接，鼠标在元素上按下还没有松开*/
+    a:active {
+        text-decoration: none;
+    }
+
+    /* 获得焦点的时候 鼠标松开时显示的颜色*/
+    a:focus {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+    <div class="content">
+        <h1 class="title"></h1>
+        <div class="span_box"><span class="phone"></span>
+            <span class="time"></span></div>
+
+        <div class="text"></div>
+        <div class="link">
+        </div>
+    </div>
+    <div id="footer"></div>
+</body>
+<script type="text/javascript" src="https://cdn.wulabh.com/ptsc/1.0.0/ptsc.min.js"></script>
+<script type="text/javascript" src="https://cdn.wulabh.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    var NowTime;
+    var NowTime2;
+    var readTime;
+    var code, href, appid, info, id, type, reading_duration, read_id, user_id;
+
+    pushHistory();
+    window.addEventListener("popstate", function (e) {
+        if (typeof (WeixinJSBridge) != "undefined") {
+            WeixinJSBridge.call('closeWindow');
+        } else {
+            if (navigator.userAgent.indexOf("MSIE") > 0) {
+                if (navigator.userAgent.indexOf("MSIE 6.0") > 0) {
+                    window.opener = null;
+                    window.close();
+                } else {
+                    window.open('', '_top');
+                    window.top.close();
+                }
+            } else if (navigator.userAgent.indexOf("Firefox") > 0) {
+                // window.location.href = 'about:blank ';
+                window.history.go(-2);
+            } else {
+                window.opener = null;
+                window.open('', '_self', '');
+                window.close();
+            }
+        }
+    }, false);
+
+    function pushHistory() {
+        var state = {
+            title: "title",
+            url: ""
+        };
+        window.history.pushState(state, "title", "");
+    }
+    window.onbeforeunload = function () {
+        return;
+    }
+    //监听页面关闭、销毁
+
+    function getUrlCode() { // 截取url中的code方法
+        var url = location.search
+        var theRequest = new Object()
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1)
+            var strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = (strs[i].split("=")[1])
+            }
+        }
+        return theRequest
+    };
+
+    function getText(data) {
+        var datas = data.split('+');
+        var that = this;
+        $.ajax({
+            url: 'http://huankemao.vip.brt360.com/admin.php/get_temporary_preview',
+            type: "post",
+            data: {
+                code: datas[0],
+                type: datas[1] == "undefined" ? '' : datas[1]
+            },
+            success: function (res) {
+                let data = JSON.parse(res);
+
+                if (data.code == 200) {
+                    console.log(data)
+                    if (data.data.link) {
+
+                        $('.link').html('<a href=' + data.data.link + '>阅读原文，点击链接</a>');
+                    }
+                    $('.title').html(data.data.title);
+                    $('.phone').html(data.data.phone);
+                    $('.time').html(data.data.create_at);
+                    $('.text').html(data.data.content);
+                    if (datas[1]) {
+                        that.SaveInfo();
+                    }
+                }
+            }
+        });
+
+    }
+
+    function SaveInfo() {
+        var arr = this.getUrlCode().state.split('+');
+        var that = this;
+        $.ajax({
+            url: 'http://huankemao.vip.brt360.com/admin.php/add_article_reading',
+            type: "post",
+            data: {
+                content_id: arr[0],
+                openid: info.openid,
+                staff_user_id: arr[2],
+                headimgurl: info.headimgurl,
+                nickname: info.nickname,
+                gender: info.sex,
+                province: info.province,
+                city: info.city,
+                reading_time: readTime,
+                reading_duration: '1'
+            },
+            success: function (res) {
+                read_id = JSON.parse(res).data;
+                if (JSON.parse(res).code == 200) {
+                    setInterval(() => {
+                        that.getreadTime()
+                    }, 1000);
+                }
+
+            }
+        });
+    }
+
+    function getreadTime() {
+        NowTime2 = new Date().getTime();
+        reading_duration = Math.round((NowTime2 - NowTime) / 1000)
+        $.ajax({
+            url: 'http://huankemao.vip.brt360.com/admin.php/add_article_reading',
+            type: "post",
+            data: {
+                id: read_id,
+                reading_duration: reading_duration
+            },
+            success: function (res) {
+                console.log(res)
+
+            }
+        });
+    }
+
+    function formatDateTime(date) {
+        var y = date.getFullYear();
+        var m = date.getMonth() + 1;
+        m = m < 10 ? ('0' + m) : m;
+        var d = date.getDate();
+        d = d < 10 ? ('0' + d) : d;
+        var h = date.getHours();
+        h = h < 10 ? ('0' + h) : h;
+        var minute = date.getMinutes();
+        minute = minute < 10 ? ('0' + minute) : minute;
+        var second = date.getSeconds();
+        second = second < 10 ? ('0' + second) : second;
+        return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
+    }
+    window.onload = function () {
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+        var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        code = this.getUrlCode().code;
+        id = this.getUrlCode().id;
+        type = this.getUrlCode().type;
+        user_id=this.getUrlCode().userid;
+        NowTime = new Date().getTime();
+        readTime = this.formatDateTime(new Date()); //获取离开时间
+
+        var that = this;
+        if (code) {
+            $.ajax({
+                url: 'http://huankemao.vip.brt360.com/admin.php/wechat_login',
+                type: "get",
+                data: {
+                    code: code
+                },
+                success: function (res) {
+                    var res = JSON.parse(res);
+                    if (res.code == '200') {
+                        info = res.data;
+
+                        localStorage.setItem("info", JSON.stringify(info));
+                        that.getText(that.getUrlCode().state)
+                    }
+                }
+            });
+        } else {
+            this.getHref()
+        }
+
+    }
+
+    function getHref() {
+        $.ajax({
+            url: 'http://huankemao.vip.brt360.com/admin.php/wechat_login',
+            type: "get",
+            data: {
+                code: ''
+            },
+            success: function (res) {
+                var res = JSON.parse(res);
+                if (res.code == '200') {
+                    appid = res.data;
+                    // console.log(id,type,use)
+                    // http://huankemao.vip.brt360.com/article-preview/huankemao_h5.html?code=071chW0w3qehGV2Et71w3wztL21chW0l&state=+da7da032-1a02-85b4-5b83-48cdaeec3134+1+HuangDan
+                    href =
+                        `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=http%3a%2f%2fhuankemao.vip.brt360.com%2farticle-preview%2fhuankemao_h5.html&response_type=code&scope=snsapi_userinfo&state=${id}+${type}+${user_id}#wechat_redirect`;
+                    window.location.href = href;
+                }
+            }
+        });
+    }
+</script>
+
+</html>

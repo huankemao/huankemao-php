@@ -27,6 +27,15 @@ QQ群：866828944
 - [http://demo.huankemao.com](http://demo.huankemao.com)
 - 用户：13910733521
 - 密码：123456
+
+#### 软件截图
+<table>
+    <tr>
+        <td><img src="https://images.gitee.com/uploads/images/2021/0203/233545_15df4df0_8387330.jpeg"/></td>
+        <td><img src="https://images.gitee.com/uploads/images/2021/0203/233557_2eac71bf_8387330.png"/></td>
+    </tr>
+</table>
+
 #### 聊天工具栏测试
 <p>
     <img src="https://images.gitee.com/uploads/images/2021/0204/173616_fa632253_8387330.png" width="240" height="240"/>
@@ -84,14 +93,6 @@ QQ群：866828944
 | Vue | MVVM框架 | 2.0+ | [https://cn.vuejs.org/](https://cn.vuejs.org/) |
 | Axios | 数据交互 | 0.21+ | [http://www.axios-js.com/](http://www.axios-js.com/) |
 | Element-UI| UI库 | 2.0+ | [https://element.eleme.cn/](https://element.eleme.cn/2.0/#/zh-CN) |
-
-## 软件截图
-<table>
-    <tr>
-        <td><img src="https://images.gitee.com/uploads/images/2021/0203/233545_15df4df0_8387330.jpeg"/></td>
-        <td><img src="https://images.gitee.com/uploads/images/2021/0203/233557_2eac71bf_8387330.png"/></td>
-    </tr>
-</table>
 
 ## 文档
 - 用户手册 [https://huankemao.com/docs/index.html](https://huankemao.com/docs/index.html)
