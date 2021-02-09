@@ -31,7 +31,7 @@ QQ群：866828944
 #### 软件截图
 <table>
     <tr>
-        <td><img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861347218.png"/></td>
+        <td><img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861486900.jpeg"/></td>
         <td><img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861092457.png"/></td>
     </tr>
 </table>
