@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="https://images.gitee.com/uploads/images/2021/0207/112656_da2725ac_8387330.jpeg" width="244" height="120"/>
+    <img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612860769431.jpeg" width="244" height="120"/>
 </p>
 
 <p align="center">
@@ -71,10 +71,10 @@ QQ群：866828944
 ## 软件架构
 | 模块 | 框架 | 部署路径 | Git仓库 |
 | :--- | :--- | :--- | :--- |
-| 后端 | ThinkPHP | / | [huankemao-php](https://gitee.com/huankemao/huankemao-php)（本仓库） |
-| PC前端| Vue | /public | [huankemao-web](https://gitee.com/huankemao/huankemao-web) |
-| 文章预览 | H5 | /public/article-preview | [huankemao-article-preview](https://gitee.com/huankemao/huankemao-article-preview) |
-| 聊天工具栏 | Vue | /public/chat-tool | [huankemao-chat-tool](https://gitee.com/huankemao/huankemao-chat-tool) |
+| 后端 | ThinkPHP | / | [huankemao-php](https://github.com/huankemao/huankemao-php)（本仓库） |
+| PC前端| Vue | /public | [huankemao-web](https://github.com/huankemao/huankemao-web) |
+| 文章预览 | H5 | /public/article-preview | [huankemao-article-preview](https://github.com/huankemao/huankemao-article-preview) |
+| 聊天工具栏 | Vue | /public/chat-tool | [huankemao-chat-tool](https://github.com/huankemao/huankemao-chat-tool) |
 
 ## 开发计划
 ![开发计划](https://images.gitee.com/uploads/images/2021/0208/132954_bbc35ca3_8387330.png "开发计划")
