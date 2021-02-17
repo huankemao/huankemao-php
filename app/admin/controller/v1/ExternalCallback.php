@@ -73,7 +73,7 @@ class ExternalCallback
                     break;
                 case 'delete':
                     // 删除客户标签
-                    if ($decryptMsg['InfoType'] == 'change_external_tag'){
+                    if ($decryptMsg['Event'] == 'change_external_tag'){
                         $this->change_external_tag($decryptMsg);
                     }
                     break;
@@ -96,8 +96,8 @@ class ExternalCallback
         switch ($decryptMsg['ChangeType']){
             case 'delete':
                 if ($decryptMsg['TagType'] == 'tag_group'){
-                    $parent_code    = Db::name('wxk_customer_tag')->where(['id' => $decryptMsg['Id']])->value('parent_code');
-                    $tag_ids        = Db::name('wxk_customer_tag')->where(['code' => $parent_code])->column('id');
+                    $parent_code    = Db::name('wxk_customer_tag')->where(['id' => $decryptMsg['Id']])->value('code');
+                    $tag_ids        = Db::name('wxk_customer_tag')->where(['parent_code' => $parent_code])->column('id');
                     array_push($tag_ids, $decryptMsg['Id']);
                 } else{
                     $tag_ids        = [$decryptMsg['Id']];

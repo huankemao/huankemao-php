@@ -25,7 +25,7 @@ class CmsContentEngine extends Model
      * @return array
      */
     public function get_content_engine_list($param){
-        $where[]      = ['a.source', '=', 2];
+        $where[]      = ['a.source', '<>', 2];
 
         if (is_exists($param['group_id'])){
             $where[]  = ['a.content_group_id', '=', $param['group_id']];

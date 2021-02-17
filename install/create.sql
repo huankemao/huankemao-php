@@ -61,8 +61,8 @@ CREATE TABLE `sys_user_role`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role`  (
-  `id` varchar(36) NOT NULL COMMENT '用户id(主键)',
-  `name` varchar(50) NOT NULL COMMENT '用户名',
+  `id` varchar(36) NOT NULL COMMENT '角色id(主键)',
+  `name` varchar(50) NOT NULL COMMENT '角色名',
   `disable` tinyint(1) NOT NULL DEFAULT 0 COMMENT '禁用状态：0正常 1禁用',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
@@ -250,7 +250,7 @@ CREATE TABLE `wxk_staff`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `wxk_app`;
 CREATE TABLE `wxk_app`  (
-  `id` varchar(36) NOT NULL COMMENT '员工id(主键)',
+  `id` varchar(36) NOT NULL COMMENT '应用id(主键)',
   `name` varchar(30) NOT NULL COMMENT '应用名称',
   `logo` varchar(100) NOT NULL COMMENT '应用logo',
   `trusted_domain` varchar(255) NOT NULL COMMENT '可信域名',
@@ -302,7 +302,7 @@ CREATE TABLE `cms_content_engine`  (
   `explain` varchar(255)NULL DEFAULT NULL COMMENT '说明',
   `content_group_id` varchar(36)  DEFAULT '1' COMMENT '分组ID',
   `type` int(11) NULL DEFAULT NULL COMMENT '类型 1.文本 2.图片 3.图文 4.音频 5.视频 6.小程序 7.文件 8.跳转链接',
-  `source` int(1) NULL DEFAULT 1 COMMENT '素材来源 1.素材库 2.正式发布',
+  `source` int(1) NULL DEFAULT 1 COMMENT '素材来源 1-通用 2-素材库 3-正式发布',
   `user` varchar(50)  NULL DEFAULT NULL COMMENT '上传者 默认手机号',
   `cover` varchar(255) NULL DEFAULT NULL COMMENT '封面',
   `wx_cover` varchar(255)  NULL DEFAULT NULL COMMENT '企业微信封面',
@@ -407,29 +407,31 @@ CREATE TABLE `wxk_article_reading_log` (
 ) ENGINE=InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT='文章阅读详情表';
 
 -- ----------------------------
--- Table structure for cms_tuoke_project
+-- Table structure for cms_develop_custom
 -- ----------------------------
-DROP TABLE IF EXISTS `cms_tuoke_project`;
-CREATE TABLE `cms_tuoke_project` (
+DROP TABLE IF EXISTS `cms_develop_custom`;
+CREATE TABLE `cms_develop_custom` (
   `id` varchar(36)  NOT NULL COMMENT '主键',
   `date_year` int(11) NOT NULL COMMENT '年份',
+  `type` tinyint(1) NOT NULL COMMENT '1-企业计划 2-成员计划',
+  `staff_id` varchar(255) DEFAULT NULL COMMENT '成员ID',
   `year_target` int(11) NOT NULL COMMENT '年度目标',
-  `one_quarter` int(11) DEFAULT NULL COMMENT '第一季度',
-  `two_quarter` int(11) DEFAULT NULL COMMENT '第二季度',
-  `three_quarter` int(11) DEFAULT NULL COMMENT '第三季度',
-  `four_quarter` int(11) DEFAULT NULL COMMENT '第四季度',
-  `one_month` int(11) DEFAULT NULL COMMENT '一月',
-  `tow_month` int(11) DEFAULT NULL COMMENT '二月',
-  `three_month` int(11) DEFAULT NULL COMMENT '三月',
-  `four_month` int(11) DEFAULT NULL COMMENT '四月',
-  `five_month` int(11) DEFAULT NULL COMMENT '五月',
-  `six_month` int(11) DEFAULT NULL COMMENT '六月',
-  `seven_month` int(11) DEFAULT NULL COMMENT '七月',
-  `eight_month` int(11) DEFAULT NULL COMMENT '八月',
-  `nine_month` int(11) DEFAULT NULL COMMENT '九月',
-  `ten_month` int(11) DEFAULT NULL COMMENT '十月',
-  `eleven_month` int(11) DEFAULT NULL COMMENT '十一月',
-  `twelve_month` int(11) DEFAULT NULL COMMENT '十二月',
+  `one_quarter` int(11) DEFAULT '0' COMMENT '第一季度',
+  `two_quarter` int(11) DEFAULT '0' COMMENT '第二季度',
+  `three_quarter` int(11) DEFAULT '0' COMMENT '第三季度',
+  `four_quarter` int(11) DEFAULT '0' COMMENT '第四季度',
+  `one_month` int(11) DEFAULT '0' COMMENT '一月',
+  `tow_month` int(11) DEFAULT '0' COMMENT '二月',
+  `three_month` int(11) DEFAULT '0' COMMENT '三月',
+  `four_month` int(11) DEFAULT '0' COMMENT '四月',
+  `five_month` int(11) DEFAULT '0' COMMENT '五月',
+  `six_month` int(11) DEFAULT '0' COMMENT '六月',
+  `seven_month` int(11) DEFAULT '0' COMMENT '七月',
+  `eight_month` int(11) DEFAULT '0' COMMENT '八月',
+  `nine_month` int(11) DEFAULT '0' COMMENT '九月',
+  `ten_month` int(11) DEFAULT '0' COMMENT '十月',
+  `eleven_month` int(11) DEFAULT '0' COMMENT '十一月',
+  `twelve_month` int(11) DEFAULT '0' COMMENT '十二月',
   `create_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)

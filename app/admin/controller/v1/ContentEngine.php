@@ -34,8 +34,8 @@ class ContentEngine
      * @throws ModelNotFoundException
      */
     public function get_media_id_content(){
-        $param      = param_receive(['media_id']);
-        $result     = ContentEngineModel::where(['media_id' => $param['media_id']])->find();
+        $param      = param_receive(['media_id', 'type']);
+        $result     = ContentEngineModel::where(['media_id' => $param['media_id'], 'type' => $param['type']])->find();
 
         response(200, '', $result);
     }
@@ -190,7 +190,9 @@ class ContentEngine
         $sql = "1=1";
         if (isset($request->data['source']) && $request->data['source'] == 2){
             $sql .= " AND (a.`source` <> 2)";
-        }else{
+        }
+
+        if (isset($request->data['source']) && $request->data['source'] == 3){
             $sql .= " AND (a.`source` <> 3)";
         }
         if ($request->data['type']) {

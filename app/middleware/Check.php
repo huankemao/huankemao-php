@@ -95,10 +95,13 @@ class Check
             }
 
             // 检测是否配置企业
-            $wxk_id     = Db::name('wxk_config')->where(true)->value('wxk_id');
-            if (!$wxk_id){
-                return rsp(506, '当前未配置企业微信信息，请前往系统设置页面配置');
+            if (!in_array(request()->pathinfo(), ['add_wxk_config', 'wxk_config_list', 'get_callback_url', 'upload_domain_verification_file'])){
+                $wxk_id     = Db::name('wxk_config')->where(true)->value('wxk_id');
+                if (!$wxk_id){
+                    return rsp(506, '当前未配置企业微信信息，请前往系统设置页面配置');
+                }
             }
+
             return $next($request);
         }
     }

@@ -226,7 +226,16 @@ Route::post('index_sale_top' , 'admin/'.$v.'.Index/index_sale_top');
 Route::post('index_drainage_data' , 'admin/'.$v.'.Index/index_drainage_data');
 
 // 添加编辑拓客计划
-Route::post('add_tuoke_project' , 'admin/'.$v.'.CmsTuokeProject/add_tuoke_project');
+Route::post('add_develop_custom' , 'admin/'.$v.'.CmsDevelopCustom/add_develop_custom');
+
+// 回显下拉列表年份
+Route::post('show_develop_custom_year' , 'admin/'.$v.'.CmsDevelopCustom/show_develop_custom_year');
+
+// 拓客情况
+Route::post('get_develop_custom_info' , 'admin/'.$v.'.CmsDevelopCustom/get_develop_custom_info');
+
+// 企业计划列表
+Route::post('get_business_plan_list' , 'admin/'.$v.'.CmsDevelopCustom/get_business_plan_list');
 
 // 成员标签同步
 Route::post('sync_staff_tag' , 'admin/'.$v.'.WxkStaffTag/sync_staff_tag');
