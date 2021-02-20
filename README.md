@@ -4,7 +4,7 @@
 
 <p align="center">
     <img src="https://img.shields.io/badge/Edition-0.0.1-orange" />
-    <img src="https://img.shields.io/badge/PHP-7.1+-green" />
+    <img src="https://img.shields.io/badge/PHP-7.3+-green" />
     <img src="https://img.shields.io/badge/Vue-2.0+-yellow" />
     <img src="https://img.shields.io/badge/MySQL-5.7+-blueviolet" />
     <img src="https://img.shields.io/badge/Download-20M-blue" />
@@ -43,7 +43,11 @@ QQ群：866828944
 </p>
 
 ## 安装教程
-
+- 环境准备
+    ```
+    PHP ≧ 7.3
+    MySQL ≧ 5.7
+    ```
 - 下载系统最新源码
 - 部署至服务器，将运行目录设置为/public
 - 由于前端Vue使用了History模式，后端服务器需设置伪静态
