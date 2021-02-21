@@ -468,8 +468,8 @@ class SysInstall
         $wxk_config->wxk_customer_callback_url = $request->data['wxk_customer_callback_url'] ?: '';
         $wxk_config->wxk_app_agent_id = $request->data['wxk_app_agent_id'] ?: '';
         $wxk_config->wxk_app_secret = $request->data['wxk_app_secret'] ?: '';
-        $wxk_config->wxk_public_app_id = $request->data['wxk_public_app_secret'] ?: '';
-        $wxk_config->wxk_public_app_secret = $request->data['wxk_public_app_secret'] ?: '';
+        $wxk_config->wxk_public_app_id = isset($request->data['wxk_public_app_secret']) ? $request->data['wxk_public_app_secret'] : '';
+        $wxk_config->wxk_public_app_secret = isset($request->data['wxk_public_app_secret']) ? $request->data['wxk_public_app_secret'] : '';
         $wxk_config->id = uuid();
         if (!$wxk_config->save() || !\app\admin\model\SysUser::AddUser($user)) {
             return rsp(500, '安装错误');
