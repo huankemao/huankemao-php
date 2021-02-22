@@ -436,9 +436,6 @@ Route::rule('staff_top', 'admin/' . $v . '.ContentEngine/StaffTop', 'POST');
 //搜索TOP10
 Route::rule('search_top', 'admin/' . $v . '.ContentEngine/SearchTop', 'POST');
 
-//JS-SDK签名
-Route::rule('wx_sign', 'admin/' . $v . '.ContentEngine/WxSign', 'POST');
-
 //客户跟进记录
 Route::rule('custom_follow_record', 'admin/' . $v . '.WxkCustomer/CustomFollowRecord', 'POST');
 

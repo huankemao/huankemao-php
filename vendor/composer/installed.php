@@ -261,12 +261,12 @@
     ),
     'topthink/think-orm' => 
     array (
-      'pretty_version' => 'v2.0.36',
-      'version' => '2.0.36.0',
+      'pretty_version' => 'v2.0.37',
+      'version' => '2.0.37.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f48dc09050f25029d41a66bfc9c3c403e4f82024',
+      'reference' => '8a2225c3533f5ccae4a77d4988ed4c5523284871',
     ),
     'topthink/think-trace' => 
     array (

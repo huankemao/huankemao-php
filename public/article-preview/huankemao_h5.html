@@ -172,7 +172,7 @@
         var datas = data.split('+');
         var that = this;
         $.ajax({
-            url: 'http://huankemao.vip.brt360.com/admin.php/get_temporary_preview',
+            url: '../admin.php/get_temporary_preview',
             type: "post",
             data: {
                 code: datas[0],
@@ -204,7 +204,7 @@
         var arr = this.getUrlCode().state.split('+');
         var that = this;
         $.ajax({
-            url: 'http://huankemao.vip.brt360.com/admin.php/add_article_reading',
+            url: '../admin.php/add_article_reading',
             type: "post",
             data: {
                 content_id: arr[0],
@@ -234,7 +234,7 @@
         NowTime2 = new Date().getTime();
         reading_duration = Math.round((NowTime2 - NowTime) / 1000)
         $.ajax({
-            url: 'http://huankemao.vip.brt360.com/admin.php/add_article_reading',
+            url: '../admin.php/add_article_reading',
             type: "post",
             data: {
                 id: read_id,
@@ -275,7 +275,7 @@
         var that = this;
         if (code) {
             $.ajax({
-                url: 'http://huankemao.vip.brt360.com/admin.php/wechat_login',
+                url: '../admin.php/wechat_login',
                 type: "get",
                 data: {
                     code: code
@@ -284,7 +284,6 @@
                     var res = JSON.parse(res);
                     if (res.code == '200') {
                         info = res.data;
-
                         localStorage.setItem("info", JSON.stringify(info));
                         that.getText(that.getUrlCode().state)
                     }
@@ -298,7 +297,7 @@
 
     function getHref() {
         $.ajax({
-            url: 'http://huankemao.vip.brt360.com/admin.php/wechat_login',
+            url: '../admin.php/wechat_login',
             type: "get",
             data: {
                 code: ''
@@ -307,10 +306,8 @@
                 var res = JSON.parse(res);
                 if (res.code == '200') {
                     appid = res.data;
-                    // console.log(id,type,use)
-                    // http://huankemao.vip.brt360.com/article-preview/huankemao_h5.html?code=071chW0w3qehGV2Et71w3wztL21chW0l&state=+da7da032-1a02-85b4-5b83-48cdaeec3134+1+HuangDan
                     href =
-                        `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=http%3a%2f%2fhuankemao.vip.brt360.com%2farticle-preview%2fhuankemao_h5.html&response_type=code&scope=snsapi_userinfo&state=${id}+${type}+${user_id}#wechat_redirect`;
+                        `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${appid}&redirect_uri=${encodeURIComponent(window.location.href.split('?')[0])}&response_type=code&scope=snsapi_userinfo&state=${id}+${type}+${user_id}#wechat_redirect`;
                     window.location.href = href;
                 }
             }

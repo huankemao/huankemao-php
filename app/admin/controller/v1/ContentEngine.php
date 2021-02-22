@@ -360,28 +360,6 @@ class ContentEngine
         return rsp(200, '成功', ['total' => $sum, 'search' => array_values($arr['search']), 'send' => array_values($arr['send']), 'open' => array_values($arr['open'])]);
     }
 
-    public function WxSign(Request $request)
-    {
-        $access_token = getAccessToken();
-        $url =  Config('common.wx_jsapi_ticket');
-        $url .= "access_token=$access_token&type=agent_config";
-        $result = httpGet($url);
-        $result = json_decode($result, true);
-        if($result['errcode'] != 0){
-            return rsp(500,$result['errmsg']);
-        }
-        $token['jsapi_ticket'] = $result['ticket'];
-        $token['noncestr']   = random_string();
-        $token['timestamp'] = time();
-        $token['url'] = 'http://huankemao.vip.brt360.com/content/manage';
-        $string = '';
-        foreach ($token as $key=>$v){
-            $string .= ($key . "=" . $v . "&");
-        }
-        $string = sha1(mb_substr($string, 0, -1));
-        return rsp(200,'成功',['signature'=>$string]);
-    }
-
     /**
      * User:Shy
      * 搜索，发送，打开次数
