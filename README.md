@@ -38,7 +38,7 @@ QQ群：866828944
 
 #### 聊天工具栏测试
 <p>
-    <img src="https://huankemao.com/huankemao-cms/upload/1/editor/1616183514000.png" width="240" height="240"/>
+    <img src="https://huankemao.com/huankemao-cms/upload/1/editor/1616591360195.png" width="240" height="240"/>
     <img src="https://huankemao.com/huankemao-cms/upload/1/editor/1612861105454.png" width="135" height="240"/>
 </p>
 
